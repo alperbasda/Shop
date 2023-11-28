@@ -11,6 +11,4 @@ public class Customer : Entity<Guid>
 
     public virtual ICollection<CustomerRoleRelation> CustomerRoles { get; set; }
 
-    public virtual ICollection<Invoice> Invoices { get; set; }
-
 }

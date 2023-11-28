@@ -8,4 +8,17 @@
     <DockerfileContext>..\..\CQRS\Shop.Domain</DockerfileContext>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Core.ApiHelpers" Version="2.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.14">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\CQRS\Shop.Persistence\Shop.Persistence.csproj" />
+  </ItemGroup>
+
 </Project>

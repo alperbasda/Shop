@@ -25,6 +25,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shop.Persistence", "CQRS\Sh
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shop.UI.Api", "Presentation\Shop.UI.Api\Shop.UI.Api.csproj", "{8B181DA5-8205-4B7B-B412-590C27B88511}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{F529D15F-DFA9-4805-8C6C-E6D1C5106BF0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shop.UnitTests", "Test\Shop.UnitTests\Shop.UnitTests.csproj", "{3E8303D4-0103-4C1C-964D-2990E0EF3494}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,6 +67,10 @@ Global
 		{8B181DA5-8205-4B7B-B412-590C27B88511}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8B181DA5-8205-4B7B-B412-590C27B88511}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8B181DA5-8205-4B7B-B412-590C27B88511}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3E8303D4-0103-4C1C-964D-2990E0EF3494}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E8303D4-0103-4C1C-964D-2990E0EF3494}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E8303D4-0103-4C1C-964D-2990E0EF3494}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E8303D4-0103-4C1C-964D-2990E0EF3494}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -76,6 +84,7 @@ Global
 		{FB82BB61-D0A9-4741-BD75-FB04C8A81676} = {564D8D65-71AB-495C-B2AC-3DCD0BE0A134}
 		{6925713B-4F09-4E44-8E44-2AEE61F2991B} = {564D8D65-71AB-495C-B2AC-3DCD0BE0A134}
 		{8B181DA5-8205-4B7B-B412-590C27B88511} = {59F32101-9B2E-4A45-B18A-DBD82A69B569}
+		{3E8303D4-0103-4C1C-964D-2990E0EF3494} = {F529D15F-DFA9-4805-8C6C-E6D1C5106BF0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {07E55D25-4C83-4F71-B011-EA7969484306}

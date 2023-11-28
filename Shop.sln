@@ -30,6 +30,11 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shop.UnitTests", "Test\Shop.UnitTests\Shop.UnitTests.csproj", "{3E8303D4-0103-4C1C-964D-2990E0EF3494}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_DbUml", "_DbUml", "{AC357BB5-5FCA-4512-8FEB-CE35DAF009A7}"
+	ProjectSection(SolutionItems) = preProject
+		_DbUml\db_uml.html = _DbUml\db_uml.html
+		_DbUml\db_uml.png = _DbUml\db_uml.png
+		_DbUml\ShopsRu.drawio = _DbUml\ShopsRu.drawio
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

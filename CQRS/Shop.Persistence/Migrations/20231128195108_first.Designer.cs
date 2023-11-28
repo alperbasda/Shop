@@ -12,7 +12,7 @@ using Shop.Persistence.Contexts;
 namespace Shop.Persistence.Migrations
 {
     [DbContext(typeof(ShopDbContext))]
-    [Migration("20231128185240_first")]
+    [Migration("20231128195108_first")]
     partial class first
     {
         /// <inheritdoc />
@@ -54,6 +54,26 @@ namespace Shop.Persistence.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Categories", "shop");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("00dfc4fa-1551-4329-935b-1663783c2eac"),
+                            CreatedTime = new DateTime(2023, 11, 28, 22, 51, 3, 30, DateTimeKind.Local).AddTicks(9678),
+                            Name = "Grocery"
+                        },
+                        new
+                        {
+                            Id = new Guid("46ae4dc3-f9d9-4e64-bbcb-8362705f06dd"),
+                            CreatedTime = new DateTime(2023, 11, 28, 22, 51, 3, 30, DateTimeKind.Local).AddTicks(9679),
+                            Name = "Fruits & Vegatables"
+                        },
+                        new
+                        {
+                            Id = new Guid("f0a8c780-06db-4634-ae9e-51bb8cc486d1"),
+                            CreatedTime = new DateTime(2023, 11, 28, 22, 51, 3, 30, DateTimeKind.Local).AddTicks(9680),
+                            Name = "Meat & Fish"
+                        });
                 });
 
             modelBuilder.Entity("Shop.Domain.RelationalEntities.Customer", b =>
@@ -90,6 +110,29 @@ namespace Shop.Persistence.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Customers", "shop");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("6efe7506-2a76-4eb2-a858-9d3872bcd8ed"),
+                            CreatedTime = new DateTime(2023, 11, 28, 22, 51, 3, 30, DateTimeKind.Local).AddTicks(9648),
+                            FirstName = "Employee",
+                            LastName = "Employee"
+                        },
+                        new
+                        {
+                            Id = new Guid("fd62308d-0b4d-493c-aa7b-d84d9bc41e9d"),
+                            CreatedTime = new DateTime(2023, 11, 28, 22, 51, 3, 30, DateTimeKind.Local).AddTicks(9649),
+                            FirstName = "Affiliate",
+                            LastName = "Affiliate"
+                        },
+                        new
+                        {
+                            Id = new Guid("8f26e38e-7010-454e-94d7-629387e15303"),
+                            CreatedTime = new DateTime(2023, 11, 28, 22, 51, 3, 30, DateTimeKind.Local).AddTicks(9651),
+                            FirstName = "StardardAccount",
+                            LastName = "StardardAccount"
+                        });
                 });
 
             modelBuilder.Entity("Shop.Domain.RelationalEntities.CustomerRoleRelation", b =>
@@ -130,6 +173,29 @@ namespace Shop.Persistence.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("CustomerRoleRelations", "shop");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("897c77f7-92c4-43d6-a8aa-fcb0fb89ea6d"),
+                            CreatedTime = new DateTime(2023, 11, 28, 22, 51, 3, 30, DateTimeKind.Local).AddTicks(9663),
+                            CustomerId = new Guid("6efe7506-2a76-4eb2-a858-9d3872bcd8ed"),
+                            RoleId = new Guid("b444c280-bc89-4c10-8ba4-902d1b6bf0ee")
+                        },
+                        new
+                        {
+                            Id = new Guid("1928e268-d8f6-47ba-8625-af88b708c74b"),
+                            CreatedTime = new DateTime(2023, 11, 28, 22, 51, 3, 30, DateTimeKind.Local).AddTicks(9665),
+                            CustomerId = new Guid("fd62308d-0b4d-493c-aa7b-d84d9bc41e9d"),
+                            RoleId = new Guid("0a7d514c-14d4-4e41-b5e8-e5d77fb25e02")
+                        },
+                        new
+                        {
+                            Id = new Guid("f01bae81-5af7-4064-823f-2d96ab058c96"),
+                            CreatedTime = new DateTime(2023, 11, 28, 22, 51, 3, 30, DateTimeKind.Local).AddTicks(9668),
+                            CustomerId = new Guid("8f26e38e-7010-454e-94d7-629387e15303"),
+                            RoleId = new Guid("b5c811d5-c122-4763-b0d6-4a6c30514c22")
+                        });
                 });
 
             modelBuilder.Entity("Shop.Domain.RelationalEntities.Discount", b =>
@@ -168,6 +234,40 @@ namespace Shop.Persistence.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Discounts", "shop");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("c5146d0b-2bbe-49b7-950f-174d5a89ccf8"),
+                            CreatedTime = new DateTime(2023, 11, 28, 22, 51, 3, 30, DateTimeKind.Local).AddTicks(9584),
+                            DiscountUsageType = 10,
+                            Name = "30% Discount",
+                            Value = 30m
+                        },
+                        new
+                        {
+                            Id = new Guid("443cbfd1-86be-4b56-847b-f0828f3a9ff5"),
+                            CreatedTime = new DateTime(2023, 11, 28, 22, 51, 3, 30, DateTimeKind.Local).AddTicks(9588),
+                            DiscountUsageType = 10,
+                            Name = "10% Discount",
+                            Value = 10m
+                        },
+                        new
+                        {
+                            Id = new Guid("b105e4c0-254c-47a5-abcf-8d0e1d7f0a90"),
+                            CreatedTime = new DateTime(2023, 11, 28, 22, 51, 3, 30, DateTimeKind.Local).AddTicks(9590),
+                            DiscountUsageType = 10,
+                            Name = "5% Discount If Over 2 Year",
+                            Value = 5m
+                        },
+                        new
+                        {
+                            Id = new Guid("26a9a19b-d72a-4c78-8a1b-2d7a76c96f5b"),
+                            CreatedTime = new DateTime(2023, 11, 28, 22, 51, 3, 30, DateTimeKind.Local).AddTicks(9597),
+                            DiscountUsageType = 20,
+                            Name = "$5 Discount For every $100",
+                            Value = 5m
+                        });
                 });
 
             modelBuilder.Entity("Shop.Domain.RelationalEntities.DiscountRoleRelation", b =>
@@ -204,6 +304,22 @@ namespace Shop.Persistence.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("DiscountRoleRelations", "shop");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("d3c91649-1f33-4e39-84de-12979cd83a29"),
+                            CreatedTime = new DateTime(2023, 11, 28, 22, 51, 3, 30, DateTimeKind.Local).AddTicks(9610),
+                            DiscountId = new Guid("c5146d0b-2bbe-49b7-950f-174d5a89ccf8"),
+                            RoleId = new Guid("b444c280-bc89-4c10-8ba4-902d1b6bf0ee")
+                        },
+                        new
+                        {
+                            Id = new Guid("8ea6454d-e69f-4cbd-aad6-91223c309381"),
+                            CreatedTime = new DateTime(2023, 11, 28, 22, 51, 3, 30, DateTimeKind.Local).AddTicks(9612),
+                            DiscountId = new Guid("443cbfd1-86be-4b56-847b-f0828f3a9ff5"),
+                            RoleId = new Guid("0a7d514c-14d4-4e41-b5e8-e5d77fb25e02")
+                        });
                 });
 
             modelBuilder.Entity("Shop.Domain.RelationalEntities.ExcludedCategoryDiscount", b =>
@@ -240,6 +356,29 @@ namespace Shop.Persistence.Migrations
                     b.HasIndex("DiscountId");
 
                     b.ToTable("ExcludedCategoryDiscounts", "shop");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("9d76e424-1c20-4c23-9c63-3ed7ce1a60ff"),
+                            CategoryId = new Guid("00dfc4fa-1551-4329-935b-1663783c2eac"),
+                            CreatedTime = new DateTime(2023, 11, 28, 22, 51, 3, 30, DateTimeKind.Local).AddTicks(9836),
+                            DiscountId = new Guid("c5146d0b-2bbe-49b7-950f-174d5a89ccf8")
+                        },
+                        new
+                        {
+                            Id = new Guid("54c0d4b7-3bd0-43c7-9be2-3b2f62a94f73"),
+                            CategoryId = new Guid("00dfc4fa-1551-4329-935b-1663783c2eac"),
+                            CreatedTime = new DateTime(2023, 11, 28, 22, 51, 3, 30, DateTimeKind.Local).AddTicks(9841),
+                            DiscountId = new Guid("443cbfd1-86be-4b56-847b-f0828f3a9ff5")
+                        },
+                        new
+                        {
+                            Id = new Guid("a3780644-2238-4b27-a367-8b59183b2d89"),
+                            CategoryId = new Guid("00dfc4fa-1551-4329-935b-1663783c2eac"),
+                            CreatedTime = new DateTime(2023, 11, 28, 22, 51, 3, 30, DateTimeKind.Local).AddTicks(9842),
+                            DiscountId = new Guid("b105e4c0-254c-47a5-abcf-8d0e1d7f0a90")
+                        });
                 });
 
             modelBuilder.Entity("Shop.Domain.RelationalEntities.Product", b =>
@@ -276,6 +415,29 @@ namespace Shop.Persistence.Migrations
                     b.HasIndex("CategoryId");
 
                     b.ToTable("Products", "shop");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("fa3edd53-9d44-436b-af90-646b2dc19edb"),
+                            CategoryId = new Guid("f0a8c780-06db-4634-ae9e-51bb8cc486d1"),
+                            CreatedTime = new DateTime(2023, 11, 28, 22, 51, 3, 30, DateTimeKind.Local).AddTicks(9856),
+                            Name = "Beef"
+                        },
+                        new
+                        {
+                            Id = new Guid("b1718dd9-be28-4202-9fe7-27033f1e48d4"),
+                            CategoryId = new Guid("46ae4dc3-f9d9-4e64-bbcb-8362705f06dd"),
+                            CreatedTime = new DateTime(2023, 11, 28, 22, 51, 3, 30, DateTimeKind.Local).AddTicks(9861),
+                            Name = "Banana"
+                        },
+                        new
+                        {
+                            Id = new Guid("5fe1dcbb-26cf-4d70-9aee-e5cf207070e1"),
+                            CategoryId = new Guid("00dfc4fa-1551-4329-935b-1663783c2eac"),
+                            CreatedTime = new DateTime(2023, 11, 28, 22, 51, 3, 30, DateTimeKind.Local).AddTicks(9863),
+                            Name = "Cigarette"
+                        });
                 });
 
             modelBuilder.Entity("Shop.Domain.RelationalEntities.Role", b =>
@@ -306,6 +468,26 @@ namespace Shop.Persistence.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Roles", "shop");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("b444c280-bc89-4c10-8ba4-902d1b6bf0ee"),
+                            CreatedTime = new DateTime(2023, 11, 28, 22, 51, 3, 30, DateTimeKind.Local).AddTicks(9453),
+                            Name = "Employee"
+                        },
+                        new
+                        {
+                            Id = new Guid("0a7d514c-14d4-4e41-b5e8-e5d77fb25e02"),
+                            CreatedTime = new DateTime(2023, 11, 28, 22, 51, 3, 30, DateTimeKind.Local).AddTicks(9464),
+                            Name = "Affiliate"
+                        },
+                        new
+                        {
+                            Id = new Guid("b5c811d5-c122-4763-b0d6-4a6c30514c22"),
+                            CreatedTime = new DateTime(2023, 11, 28, 22, 51, 3, 30, DateTimeKind.Local).AddTicks(9466),
+                            Name = "StardardAccount"
+                        });
                 });
 
             modelBuilder.Entity("Shop.Domain.RelationalEntities.CustomerRoleRelation", b =>

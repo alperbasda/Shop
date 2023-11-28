@@ -11,7 +11,7 @@ public static class ApiServiceRegistrations
     public static IServiceCollection AddApiServices(this IServiceCollection services, IConfiguration configuration)
     {
         //services.AddHttpContextAccessor();
-        //services.AddScoped<LoggerServiceBase, ElasticLogger>();
+        //services.AddTransient<LoggerServiceBase, ElasticLogger>();
         //services.AddScoped<TokenParameters>();
         //services.AddApplicationServices(configuration);
         services.AddPersistenceServices(configuration);

@@ -31,5 +31,9 @@ public class ShopDbContext : DbContext
     {
         modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
         modelBuilder.HasDefaultSchema("shop");
+        
+        ShopDataInitilizer.InitData(modelBuilder);
+
+        base.OnModelCreating(modelBuilder);
     }
 }

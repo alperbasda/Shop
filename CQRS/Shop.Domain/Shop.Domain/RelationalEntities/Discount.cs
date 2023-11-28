@@ -5,9 +5,14 @@ namespace Shop.Domain.RelationalEntities;
 
 public class Discount : Entity<Guid>
 {
-    public string Name { get; set; }
+    public string Name { get; set; } = null!;
 
     public DiscountUsageType DiscountUsageType { get; set; }
 
-    public double Value { get; set; }
+    public decimal Value { get; set; }
+
+    public virtual ICollection<ExcludedCategoryDiscount> ExcludedCategoryDiscounts { get; set; }
+
+    public virtual ICollection<DiscountRoleRelation> DiscountRoles { get; set; }
+
 }

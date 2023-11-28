@@ -1,12 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Core.Persistence.Models;
 
-namespace Shop.Domain.RelationalEntities
+namespace Shop.Domain.RelationalEntities;
+
+public class CustomerRoleRelation : Entity<Guid>
 {
-    internal class CustomerRoleRelation
-    {
-    }
+    public Guid RoleId { get; set; }
+
+    public virtual Role Role { get; set; }
+
+    public Guid CustomerId { get; set; }
+
+    public virtual Customer Customer { get; set; }
+
+    public DateTime? LastValidTime { get; set; }
 }

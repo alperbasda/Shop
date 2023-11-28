@@ -8,7 +8,7 @@ public class Product : Entity<Guid>
 
     public virtual Category Category { get; set; }
 
-    public string Name { get; set; }
+    public string Name { get; set; } = null!;
 
 
 }

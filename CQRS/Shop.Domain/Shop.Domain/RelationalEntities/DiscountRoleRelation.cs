@@ -1,12 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Core.Persistence.Models;
 
-namespace Shop.Domain.RelationalEntities
+namespace Shop.Domain.RelationalEntities;
+
+public class DiscountRoleRelation : Entity<Guid>
 {
-    internal class DiscountRoleRelation
-    {
-    }
+    public Guid RoleId { get; set; }
+
+    public virtual Role Role { get; set; }
+
+    public Guid DiscountId { get; set; }
+
+    public virtual Discount Discount { get; set; }
+
+
 }

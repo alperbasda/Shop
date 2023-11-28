@@ -1,12 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Core.Persistence.Models;
 
-namespace Shop.Domain.RelationalEntities
+namespace Shop.Domain.RelationalEntities;
+
+public class ExcludedCategoryDiscount : Entity<Guid>
 {
-    internal class ExcludedCategoryDiscount
-    {
-    }
+    public Guid CategoryId { get; set; }
+
+    public virtual Category Category { get; set; }
+
+    public Guid DiscountId { get; set; }
+
+    public virtual Discount Discount { get; set; }
 }

@@ -18,6 +18,7 @@ public class DiscountEntityConfigurations : IEntityTypeConfiguration<Discount>
         builder.HasQueryFilter(w => !w.DeletedTime.HasValue);
 
         builder.Property(w => w.DiscountUsageType).HasColumnName("DiscountUsageType").IsRequired();
+        builder.Property(w => w.Priority).HasColumnName("Priority").IsRequired();
         builder.Property(w => w.Value).HasColumnName("Value").IsRequired();
         builder.Property(w => w.Name).HasColumnName("Name").IsRequired().HasMaxLength(EntityConfigurationConstants.MinLevelMaxLength);
     }

@@ -19,9 +19,7 @@ public class ShopDbContext : DbContext
 
     public virtual DbSet<Discount> Discounts { get; set; }
 
-    public virtual DbSet<DiscountRoleRelation> DiscountRoleRelations { get; set; }
-
-    public virtual DbSet<ExcludedCategoryDiscount> ExcludedCategoryDiscounts { get; set; }
+    public virtual DbSet<DiscountCriterion> DiscountCriteria { get; set; }
 
     public virtual DbSet<Product> Products { get; set; }
 

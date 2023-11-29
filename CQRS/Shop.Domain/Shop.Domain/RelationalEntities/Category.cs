@@ -8,5 +8,4 @@ public class Category : Entity<Guid>
 
     public virtual ICollection<Product> Products { get; set; }
 
-    public virtual ICollection<ExcludedCategoryDiscount> ExcludedCategoryDiscounts { get; set; }
 }

@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Core.Persistence.Dynamic;
+using Microsoft.EntityFrameworkCore;
 using Shop.Domain.Enum;
 using Shop.Domain.RelationalEntities;
 
@@ -49,6 +50,7 @@ public class ShopDataInitilizer
         var percent30Discount = Guid.NewGuid();
         var percent10Discount = Guid.NewGuid();
         var percent5Discount = Guid.NewGuid();
+        var direct5Discount = Guid.NewGuid();
 
         var discounts = new[]
         {
@@ -60,7 +62,8 @@ public class ShopDataInitilizer
                 UpdatedTime = null,
                 Name = "30% Discount",
                 Value = 30,
-                DiscountUsageType = DiscountUsageType.Percent
+                DiscountUsageType = DiscountUsageType.Percent,
+                Priority = 1,
             },
             new Discount
             {
@@ -70,7 +73,8 @@ public class ShopDataInitilizer
                 UpdatedTime = null,
                 Name = "10% Discount",
                 Value = 10,
-                DiscountUsageType = DiscountUsageType.Percent
+                DiscountUsageType = DiscountUsageType.Percent,
+                Priority = 2,
             },
             new Discount
             {
@@ -80,17 +84,19 @@ public class ShopDataInitilizer
                 UpdatedTime = null,
                 Name = "5% Discount If Over 2 Year",
                 Value = 5,
-                DiscountUsageType = DiscountUsageType.Percent
+                DiscountUsageType = DiscountUsageType.Percent,
+                Priority = 3,
             },
             new Discount
             {
-                Id = Guid.NewGuid(),
+                Id = direct5Discount,
                 CreatedTime = DateTime.Now,
                 DeletedTime = null,
                 UpdatedTime = null,
                 Name = "$5 Discount For every $100",
                 Value = 5,
-                DiscountUsageType = DiscountUsageType.Direct
+                DiscountUsageType = DiscountUsageType.Direct,
+                Priority = 4,
             }
         };
 
@@ -98,31 +104,127 @@ public class ShopDataInitilizer
 
         #endregion
 
-        #region AddDiscountRoles
+        #region AddCategories
 
-        var discountRoles = new[]
+        var groceryCategoryId = Guid.NewGuid();
+        var fruitCategoryId = Guid.NewGuid();
+        var meatCategoryId = Guid.NewGuid();
+        var categories = new[]
         {
-            new DiscountRoleRelation
+            new Category
             {
-                Id = Guid.NewGuid(),
+                Id = groceryCategoryId,
                 CreatedTime = DateTime.Now,
                 DeletedTime = null,
                 UpdatedTime = null,
-                DiscountId = percent30Discount,
-                RoleId = employeeRoleId
+                Name = "Grocery"
             },
-            new DiscountRoleRelation
+            new Category
             {
-                Id = Guid.NewGuid(),
+                Id = fruitCategoryId,
                 CreatedTime = DateTime.Now,
                 DeletedTime = null,
                 UpdatedTime = null,
-                DiscountId = percent10Discount,
-                RoleId = affiliateRoleId
-            }
+                Name = "Fruits & Vegatables"
+            },
+            new Category
+            {
+                Id = meatCategoryId,
+                CreatedTime = DateTime.Now,
+                DeletedTime = null,
+                UpdatedTime = null,
+                Name = "Meat & Fish"
+            },
         };
 
-        modelBuilder.Entity<DiscountRoleRelation>().HasData(discountRoles);
+        modelBuilder.Entity<Category>().HasData(categories);
+
+        #endregion
+
+        #region AddDiscountCriteria
+
+        var discountCriteria = new[]
+        {
+            new DiscountCriterion
+            {
+                Id = Guid.NewGuid(),
+                CreatedTime = DateTime.Now,
+                DeletedTime = null,
+                UpdatedTime = null,
+                DiscountAssignType = DiscountAssignType.ForRole,
+                DiscountId = percent30Discount,
+                FilterOperator = FilterOperator.Equals,
+                Criterion = employeeRoleId.ToString(),
+            },
+            new DiscountCriterion
+            {
+                Id = Guid.NewGuid(),
+                CreatedTime = DateTime.Now,
+                DeletedTime = null,
+                UpdatedTime = null,
+                DiscountAssignType = DiscountAssignType.ForRole,
+                DiscountId = percent10Discount,
+                FilterOperator = FilterOperator.Equals,
+                Criterion = affiliateRoleId.ToString(),
+            },
+            new DiscountCriterion
+            {
+                Id = Guid.NewGuid(),
+                CreatedTime = DateTime.Now,
+                DeletedTime = null,
+                UpdatedTime = null,
+                DiscountAssignType = DiscountAssignType.ForRegisterBeforeYear,
+                DiscountId = percent5Discount,
+                FilterOperator = FilterOperator.LessThanOrEqual,
+                Criterion = "2".ToString(),
+            },
+            new DiscountCriterion
+            {
+                Id = Guid.NewGuid(),
+                CreatedTime = DateTime.Now,
+                DeletedTime = null,
+                UpdatedTime = null,
+                DiscountAssignType = DiscountAssignType.ForTotalPrice,
+                DiscountId = direct5Discount,
+                FilterOperator = FilterOperator.GreaterThanOrEqual,
+                Criterion = "100".ToString(),
+            },
+            new DiscountCriterion
+            {
+                Id = Guid.NewGuid(),
+                CreatedTime = DateTime.Now,
+                DeletedTime = null,
+                UpdatedTime = null,
+                DiscountAssignType = DiscountAssignType.ForCategory,
+                DiscountId = percent5Discount,
+                FilterOperator = FilterOperator.DoesntEqual,
+                Criterion = groceryCategoryId.ToString(),
+            },
+            new DiscountCriterion
+            {
+                Id = Guid.NewGuid(),
+                CreatedTime = DateTime.Now,
+                DeletedTime = null,
+                UpdatedTime = null,
+                DiscountAssignType = DiscountAssignType.ForCategory,
+                DiscountId = percent10Discount,
+                FilterOperator = FilterOperator.DoesntEqual,
+                Criterion = groceryCategoryId.ToString(),
+            },
+            new DiscountCriterion
+            {
+                Id = Guid.NewGuid(),
+                CreatedTime = DateTime.Now,
+                DeletedTime = null,
+                UpdatedTime = null,
+                DiscountAssignType = DiscountAssignType.ForCategory,
+                DiscountId = percent30Discount,
+                FilterOperator = FilterOperator.DoesntEqual,
+                Criterion = groceryCategoryId.ToString(),
+            },
+        };
+
+        modelBuilder.Entity<DiscountCriterion>().HasData(discountCriteria);
 
         #endregion
 
@@ -199,59 +301,6 @@ public class ShopDataInitilizer
         };
 
         modelBuilder.Entity<CustomerRoleRelation>().HasData(customerRoles);
-
-        #endregion
-
-        #region AddCategories
-
-        var groceryCategoryId = Guid.NewGuid();
-        var fruitCategoryId = Guid.NewGuid();
-        var meatCategoryId = Guid.NewGuid();
-        var categories = new[]
-        {
-            new Category
-            {
-                Id = groceryCategoryId,
-                CreatedTime = DateTime.Now,
-                DeletedTime = null,
-                UpdatedTime = null,
-                Name = "Grocery"
-            },
-            new Category
-            {
-                Id = fruitCategoryId,
-                CreatedTime = DateTime.Now,
-                DeletedTime = null,
-                UpdatedTime = null,
-                Name = "Fruits & Vegatables"
-            },
-            new Category
-            {
-                Id = meatCategoryId,
-                CreatedTime = DateTime.Now,
-                DeletedTime = null,
-                UpdatedTime = null,
-                Name = "Meat & Fish"
-            },
-        };
-
-        modelBuilder.Entity<Category>().HasData(categories);
-
-        #endregion
-
-        #region AddExcludedCategoryDiscountRelations
-
-        var excludedCategoryDiscounts = discounts.Where(q => q.DiscountUsageType == DiscountUsageType.Percent).Select(q => new ExcludedCategoryDiscount
-        {
-            Id = Guid.NewGuid(),
-            CreatedTime = DateTime.Now,
-            DeletedTime = null,
-            UpdatedTime = null,
-            CategoryId = groceryCategoryId,
-            DiscountId = q.Id,
-        }).ToArray();
-
-        modelBuilder.Entity<ExcludedCategoryDiscount>().HasData(excludedCategoryDiscounts);
 
         #endregion
 

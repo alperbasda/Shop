@@ -20,8 +20,7 @@ public static class PersistenceServiceRegistrations
         services.AddScoped<ICustomerDal, CustomerDal>();
         services.AddScoped<ICustomerRoleRelationDal, CustomerRoleRelationDal>();
         services.AddScoped<IDiscountDal, DiscountDal>();
-        services.AddScoped<IDiscountRoleRelationDal, DiscountRoleRelationDal>();
-        services.AddScoped<IExcludedCategoryDiscountDal, ExcludedCategoryDiscountDal>();
+        services.AddScoped<IDiscountCriterionDal, DiscountCriterionDal>();
         services.AddScoped<IInvoiceDal, InvoiceDal>();
         services.AddScoped<IInvoiceItemDal, InvoiceItemDal>();
         services.AddScoped<IProductDal, ProductDal>();

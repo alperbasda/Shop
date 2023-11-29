@@ -5,9 +5,9 @@ using Shop.Persistence.Contexts;
 
 namespace Shop.Persistence.Repositories;
 
-public class ExcludedCategoryDiscountDal : EfRepositoryBase<ExcludedCategoryDiscount, Guid, ShopDbContext>, IExcludedCategoryDiscountDal
+public class DiscountCriterionDal : EfRepositoryBase<DiscountCriterion, Guid, ShopDbContext>, IDiscountCriterionDal
 {
-    public ExcludedCategoryDiscountDal(ShopDbContext context) : base(context)
+    public DiscountCriterionDal(ShopDbContext context) : base(context)
     {
     }
 }

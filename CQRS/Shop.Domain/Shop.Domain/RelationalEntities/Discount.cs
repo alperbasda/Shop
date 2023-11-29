@@ -11,8 +11,8 @@ public class Discount : Entity<Guid>
 
     public decimal Value { get; set; }
 
-    public virtual ICollection<ExcludedCategoryDiscount> ExcludedCategoryDiscounts { get; set; }
+    public int Priority { get; set; }
 
-    public virtual ICollection<DiscountRoleRelation> DiscountRoles { get; set; }
+    public virtual ICollection<DiscountCriterion> DiscountCriteria { get; set; }
 
 }

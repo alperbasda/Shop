@@ -4,11 +4,11 @@ using Shop.Domain.RelationalEntities;
 
 namespace Shop.Persistence.EntityConfigurations;
 
-public class DiscountRoleRelationEntityConfigurations : IEntityTypeConfiguration<DiscountRoleRelation>
+public class DiscountCriterionEntityConfigurations : IEntityTypeConfiguration<DiscountCriterion>
 {
-    public void Configure(EntityTypeBuilder<DiscountRoleRelation> builder)
+    public void Configure(EntityTypeBuilder<DiscountCriterion> builder)
     {
-        builder.ToTable("DiscountRoleRelations").HasKey(t => t.Id);
+        builder.ToTable("DiscountCriteria").HasKey(t => t.Id);
 
         builder.Property(w => w.Id).HasColumnName("Id").IsRequired();
         builder.Property(w => w.CreatedTime).HasColumnName("CreatedTime").IsRequired();
@@ -16,10 +16,11 @@ public class DiscountRoleRelationEntityConfigurations : IEntityTypeConfiguration
         builder.Property(w => w.UpdatedTime).HasColumnName("UpdatedTime");
         builder.HasQueryFilter(w => !w.DeletedTime.HasValue);
 
-        builder.Property(w => w.RoleId).HasColumnName("RoleId").IsRequired();
+        builder.Property(w => w.Criterion).HasColumnName("Criterion").IsRequired();
+        builder.Property(w => w.DiscountAssignType).HasColumnName("DiscountAssignType").IsRequired();
+        builder.Property(w => w.FilterOperator).HasColumnName("FilterOperator").IsRequired();
         builder.Property(w => w.DiscountId).HasColumnName("DiscountId").IsRequired();
 
-        builder.HasOne(w => w.Role).WithMany(w => w.RoleDiscounts).HasForeignKey(w => w.RoleId).OnDelete(DeleteBehavior.Restrict);
-        builder.HasOne(w => w.Discount).WithMany(w => w.DiscountRoles).HasForeignKey(w => w.DiscountId).OnDelete(DeleteBehavior.Restrict);
+        builder.HasOne(w => w.Discount);
     }
 }

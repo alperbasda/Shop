@@ -10,7 +10,11 @@ public class Invoice : MongoEntity<Guid>
 
     public string Number { get; set; } = null!;
 
-    public decimal TotalAmount { get; set; }
+    public decimal TotalPrice { get; set; }
+
+    public decimal DiscountedTotalPrice { get; set; }
+
+    public string UsedDiscounts { get; set; } = "";
 
     public List<InvoiceItem> InvoiceItems { get; set; }
 }

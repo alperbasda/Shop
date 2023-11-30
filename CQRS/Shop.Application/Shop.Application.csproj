@@ -21,4 +21,12 @@
     <ProjectReference Include="..\Shop.Domain\Shop.Domain\Shop.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Features\DiscountCriterias\Handlers\Queries\" />
+    <Folder Include="Features\DiscountCriterias\Handlers\Queries\ListDynamic\" />
+    <Folder Include="Features\Invoices\Handlers\Queries\" />
+    <Folder Include="Features\Invoices\Rules\" />
+    <Folder Include="Features\Invoices\Queries\" />
+  </ItemGroup>
+
 </Project>

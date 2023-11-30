@@ -18,6 +18,6 @@ public enum DiscountAssignType
     ForRegisterBeforeYear = 20,
     [Description("Toplam Ödeme Tutarına Göre")]
     ForTotalPrice = 30,
-    [Description("Kategoriye Göre")]
-    ForCategory = 40,
+    [Description("Kategorinin Dışındakilere Göre")]
+    ForExcludedCategory = 40,
 }

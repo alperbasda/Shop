@@ -18,9 +18,9 @@ public class DiscountCriterionEntityConfigurations : IEntityTypeConfiguration<Di
 
         builder.Property(w => w.Criterion).HasColumnName("Criterion").IsRequired();
         builder.Property(w => w.DiscountAssignType).HasColumnName("DiscountAssignType").IsRequired();
-        builder.Property(w => w.FilterOperator).HasColumnName("FilterOperator").IsRequired();
         builder.Property(w => w.DiscountId).HasColumnName("DiscountId").IsRequired();
-
+        builder.Property(w => w.UseForDirectCondition).HasColumnName("UseForDirectCondition").IsRequired();
+        
         builder.HasOne(w => w.Discount);
     }
 }

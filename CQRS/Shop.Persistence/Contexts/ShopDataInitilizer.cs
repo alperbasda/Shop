@@ -64,6 +64,7 @@ public class ShopDataInitilizer
                 Value = 30,
                 DiscountUsageType = DiscountUsageType.Percent,
                 Priority = 1,
+                
             },
             new Discount
             {
@@ -75,6 +76,7 @@ public class ShopDataInitilizer
                 Value = 10,
                 DiscountUsageType = DiscountUsageType.Percent,
                 Priority = 2,
+                
             },
             new Discount
             {
@@ -86,6 +88,7 @@ public class ShopDataInitilizer
                 Value = 5,
                 DiscountUsageType = DiscountUsageType.Percent,
                 Priority = 3,
+                
             },
             new Discount
             {
@@ -96,7 +99,7 @@ public class ShopDataInitilizer
                 Name = "$5 Discount For every $100",
                 Value = 5,
                 DiscountUsageType = DiscountUsageType.Direct,
-                Priority = 4,
+                Priority = 4
             }
         };
 
@@ -153,7 +156,6 @@ public class ShopDataInitilizer
                 UpdatedTime = null,
                 DiscountAssignType = DiscountAssignType.ForRole,
                 DiscountId = percent30Discount,
-                FilterOperator = FilterOperator.Equals,
                 Criterion = employeeRoleId.ToString(),
             },
             new DiscountCriterion
@@ -164,7 +166,6 @@ public class ShopDataInitilizer
                 UpdatedTime = null,
                 DiscountAssignType = DiscountAssignType.ForRole,
                 DiscountId = percent10Discount,
-                FilterOperator = FilterOperator.Equals,
                 Criterion = affiliateRoleId.ToString(),
             },
             new DiscountCriterion
@@ -175,7 +176,6 @@ public class ShopDataInitilizer
                 UpdatedTime = null,
                 DiscountAssignType = DiscountAssignType.ForRegisterBeforeYear,
                 DiscountId = percent5Discount,
-                FilterOperator = FilterOperator.LessThanOrEqual,
                 Criterion = "2".ToString(),
             },
             new DiscountCriterion
@@ -186,8 +186,8 @@ public class ShopDataInitilizer
                 UpdatedTime = null,
                 DiscountAssignType = DiscountAssignType.ForTotalPrice,
                 DiscountId = direct5Discount,
-                FilterOperator = FilterOperator.GreaterThanOrEqual,
                 Criterion = "100".ToString(),
+                UseForDirectCondition = true,
             },
             new DiscountCriterion
             {
@@ -195,9 +195,8 @@ public class ShopDataInitilizer
                 CreatedTime = DateTime.Now,
                 DeletedTime = null,
                 UpdatedTime = null,
-                DiscountAssignType = DiscountAssignType.ForCategory,
+                DiscountAssignType = DiscountAssignType.ForExcludedCategory,
                 DiscountId = percent5Discount,
-                FilterOperator = FilterOperator.DoesntEqual,
                 Criterion = groceryCategoryId.ToString(),
             },
             new DiscountCriterion
@@ -206,9 +205,8 @@ public class ShopDataInitilizer
                 CreatedTime = DateTime.Now,
                 DeletedTime = null,
                 UpdatedTime = null,
-                DiscountAssignType = DiscountAssignType.ForCategory,
+                DiscountAssignType = DiscountAssignType.ForExcludedCategory,
                 DiscountId = percent10Discount,
-                FilterOperator = FilterOperator.DoesntEqual,
                 Criterion = groceryCategoryId.ToString(),
             },
             new DiscountCriterion
@@ -217,9 +215,8 @@ public class ShopDataInitilizer
                 CreatedTime = DateTime.Now,
                 DeletedTime = null,
                 UpdatedTime = null,
-                DiscountAssignType = DiscountAssignType.ForCategory,
+                DiscountAssignType = DiscountAssignType.ForExcludedCategory,
                 DiscountId = percent30Discount,
-                FilterOperator = FilterOperator.DoesntEqual,
                 Criterion = groceryCategoryId.ToString(),
             },
         };
@@ -315,7 +312,8 @@ public class ShopDataInitilizer
                 DeletedTime = null,
                 UpdatedTime = null,
                 CategoryId = meatCategoryId,
-                Name = "Beef"
+                Name = "Beef",
+                UnitPrice = 100
             },
             new Product
             {
@@ -324,7 +322,8 @@ public class ShopDataInitilizer
                 DeletedTime = null,
                 UpdatedTime = null,
                 CategoryId = fruitCategoryId,
-                Name = "Banana"
+                Name = "Banana",
+                UnitPrice = 20
             },
             new Product
             {
@@ -333,7 +332,8 @@ public class ShopDataInitilizer
                 DeletedTime = null,
                 UpdatedTime = null,
                 CategoryId = groceryCategoryId,
-                Name = "Cigarette"
+                Name = "Cigarette",
+                UnitPrice = 50
             },
         };
 

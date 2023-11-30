@@ -27,7 +27,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shop.UI.Api", "Presentation
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{F529D15F-DFA9-4805-8C6C-E6D1C5106BF0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shop.UnitTests", "Test\Shop.UnitTests\Shop.UnitTests.csproj", "{3E8303D4-0103-4C1C-964D-2990E0EF3494}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shop.UnitTests", "Test\Shop.UnitTests\Shop.UnitTests.csproj", "{3E8303D4-0103-4C1C-964D-2990E0EF3494}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_DbUml", "_DbUml", "{AC357BB5-5FCA-4512-8FEB-CE35DAF009A7}"
 	ProjectSection(SolutionItems) = preProject

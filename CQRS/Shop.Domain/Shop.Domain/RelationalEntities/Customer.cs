@@ -1,5 +1,4 @@
 ﻿using Core.Persistence.Models;
-using Shop.Domain.MongoEntities;
 
 namespace Shop.Domain.RelationalEntities;
 

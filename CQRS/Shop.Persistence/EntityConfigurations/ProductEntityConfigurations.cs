@@ -18,6 +18,7 @@ public class ProductEntityConfigurations : IEntityTypeConfiguration<Product>
         builder.HasQueryFilter(w => !w.DeletedTime.HasValue);
 
         builder.Property(w => w.CategoryId).HasColumnName("CategoryId").IsRequired();
+        builder.Property(w => w.UnitPrice).HasColumnName("UnitPrice").IsRequired();
         builder.Property(w => w.Name).HasColumnName("Name").IsRequired().HasMaxLength(EntityConfigurationConstants.MidLevelMaxLength);
 
         builder.HasOne(w => w.Category);

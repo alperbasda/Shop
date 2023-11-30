@@ -1,12 +1,12 @@
 ﻿using Core.Application.Pipelines.Caching;
 using Core.Application.Pipelines.Transaction;
 using Core.Application.Pipelines.Validation;
-using Core.Persistence.Models;
 using FluentValidation;
 using MediatR.NotificationPublishers;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Shop.Application.Base;
+using Shop.Application.Helpers.DiscountFinderChain.Base;
 using StackExchange.Redis;
 using System.Reflection;
 
@@ -17,10 +17,13 @@ public static class ApplicationServiceRegistrations
     public static IServiceCollection AddApplicationServices(this IServiceCollection services, IConfiguration configuration)
     {
         var execAssembly = Assembly.GetExecutingAssembly();
-        
+        var cacheSettings = services.AddSettingsSingleton<CacheSettings>(configuration);
+
+
         services.AddSubClassesOfType(execAssembly, typeof(BaseBusinessRules));
         services.AddAutoMapper(execAssembly);
         services.AddValidatorsFromAssembly(execAssembly);
+        services.AddRedis(cacheSettings);
 
         services.AddMediatR(configuration =>
         {
@@ -36,9 +39,10 @@ public static class ApplicationServiceRegistrations
             configuration.Lifetime = ServiceLifetime.Scoped;
         });
 
-        var cacheSettings = services.AddSettingsSingleton<CacheSettings>(configuration);
-        services.AddRedis(cacheSettings);
         
+
+        services.AddScoped<IDiscountChainStarter, DiscountChainStarter>();
+
 
         return services;
     }
@@ -47,6 +51,8 @@ public static class ApplicationServiceRegistrations
     {
         if (!cacheSettings.IsActive)
             return;
+
+        services.AddDistributedMemoryCache();
         services.AddStackExchangeRedisCache(opt =>
         {
 

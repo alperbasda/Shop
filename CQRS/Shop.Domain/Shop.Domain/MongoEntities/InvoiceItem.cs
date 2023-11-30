@@ -4,13 +4,19 @@ namespace Shop.Domain.MongoEntities;
 
 public class InvoiceItem : MongoEntity<Guid>
 {
+    public Guid ProductId { get; set; }
+
+    public Guid CategoryId { get; set; }
+
     public string ProductName { get; set; } = null!;
 
     public decimal UnitPrice { get; set; }
 
     public int Amount { get; set; }
 
-    public decimal TotalPrice { get; set; }
+    public decimal Price { get; set; }
 
+    public decimal DiscountedPrice { get; set; }
 
+    public string UsedDiscounts { get; set; }
 }

@@ -2,6 +2,10 @@
 <AnalysisInput>
   <Settings>
     <Setting>
+      <Key>sonar.cs.dotcover.reportsPaths</Key>
+      <Value>C:\Users\Admin\source\repos\ShopRu\Shop\TestResults\527d7895-e7e5-481c-b7b1-e386fc55f129</Value>
+    </Setting>
+    <Setting>
       <Key>sonar.cs.ignoreHeaderComments</Key>
       <Value>true</Value>
     </Setting>

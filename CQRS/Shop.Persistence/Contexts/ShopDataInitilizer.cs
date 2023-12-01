@@ -262,6 +262,16 @@ public class ShopDataInitilizer
                 FirstName = "StardardAccount",
                 LastName = "StardardAccount"
             },
+            new Customer
+            {
+                Id = Guid.Parse("4379A7E9-E09B-42C4-8ABD-54A0E6974F0D"),
+                CreatedTime = DateTime.Now.AddYears(-10),
+                DeletedTime = null,
+                UpdatedTime = null,
+                FirstName = "OldAccount",
+                LastName = "OldAccount"
+            },
+            
         };
 
         modelBuilder.Entity<Customer>().HasData(customers);

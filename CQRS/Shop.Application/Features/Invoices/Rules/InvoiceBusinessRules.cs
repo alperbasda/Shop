@@ -45,7 +45,7 @@ public class InvoiceBusinessRules : BaseBusinessRules
                 Price = item.Amount * selectedProduct.UnitPrice,
                 CategoryId = selectedProduct.CategoryId,
                 ProductId = selectedProduct.Id,
-                DiscountedPrice = selectedProduct.UnitPrice,
+                DiscountedPrice = item.Amount * selectedProduct.UnitPrice,
             });
         }
 

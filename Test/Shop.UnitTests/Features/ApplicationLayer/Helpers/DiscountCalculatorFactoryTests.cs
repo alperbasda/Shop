@@ -1,6 +1,5 @@
 ﻿using Core.CrossCuttingConcerns.Exceptions.Types;
 using Moq;
-using Shop.Application.Features.DiscountCriterias.Queries.ListDynamic;
 using Shop.Application.Features.Discounts.Queries.ListDynamic;
 using Shop.Application.Helpers.DiscountCalculatorFactories.Calculators;
 using Shop.Application.Helpers.DiscountCalculatorFactories.Factory;
@@ -8,7 +7,7 @@ using Shop.Domain.Enum;
 using Shop.Domain.MongoEntities;
 using Shop.UnitTests.Base;
 
-namespace Shop.UnitTests.Helpers;
+namespace Shop.UnitTests.Features.ApplicationLayer.Helpers;
 
 public class DiscountCalculatorFactoryTests : XUnitBase
 {

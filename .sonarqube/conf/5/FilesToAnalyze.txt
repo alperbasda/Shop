@@ -1,9 +1,10 @@
 ﻿C:\Users\Admin\source\repos\ShopRu\Shop\Test\Shop.UnitTests\Base\XUnitBase.cs
 C:\Users\Admin\source\repos\ShopRu\Shop\Test\Shop.UnitTests\Features\ApplicationLayer\CustomerTests.cs
+C:\Users\Admin\source\repos\ShopRu\Shop\Test\Shop.UnitTests\Features\ApplicationLayer\Helpers\DiscountCalculatorFactoryTests.cs
+C:\Users\Admin\source\repos\ShopRu\Shop\Test\Shop.UnitTests\Features\ApplicationLayer\Helpers\DiscountChainTests.cs
 C:\Users\Admin\source\repos\ShopRu\Shop\Test\Shop.UnitTests\Features\ApplicationLayer\ProductTests.cs
 C:\Users\Admin\source\repos\ShopRu\Shop\Test\Shop.UnitTests\Features\Connections\ConnectionTests.cs
 C:\Users\Admin\source\repos\ShopRu\Shop\Test\Shop.UnitTests\GlobalUsings.cs
-C:\Users\Admin\source\repos\ShopRu\Shop\Test\Shop.UnitTests\Helpers\DiscountCalculatorFactoryTests.cs
 C:\Users\Admin\.nuget\packages\microsoft.net.test.sdk\17.6.0\build\netcoreapp3.1\Microsoft.NET.Test.Sdk.Program.cs
 C:\Users\Admin\.nuget\packages\microsoft.testplatform.testhost\17.6.0\build\netcoreapp3.1\x64\testhost.exe
 C:\Users\Admin\.nuget\packages\microsoft.testplatform.testhost\17.6.0\build\netcoreapp3.1\x64\testhost.dll

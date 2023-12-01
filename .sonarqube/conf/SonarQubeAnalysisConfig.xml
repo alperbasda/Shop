@@ -171,6 +171,7 @@ Automatic Analysis will not be available between 07:00 CET and 09:00 CET</Proper
   </ServerSettings>
   <LocalSettings>
     <Property Name="sonar.host.url">https://sonarcloud.io</Property>
+    <Property Name="sonar.cs.dotcover.reportsPaths">C:\Users\Admin\source\repos\ShopRu\Shop\TestResults\527d7895-e7e5-481c-b7b1-e386fc55f129</Property>
     <Property Name="sonar.organization">abasda</Property>
   </LocalSettings>
   <AnalyzersSettings>

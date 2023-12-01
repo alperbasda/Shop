@@ -25,7 +25,6 @@ public class XUnitBase : TestBedFixture
     protected TPoco GeneratePoco<TPoco>(Func<ICustomizationComposer<TPoco>, IPostprocessComposer<TPoco>> customizationAction = null)
     {
         ICustomizationComposer<TPoco> a = Fixture.Build<TPoco>();
-
         if (customizationAction != null)
             return customizationAction(a).Create();
 

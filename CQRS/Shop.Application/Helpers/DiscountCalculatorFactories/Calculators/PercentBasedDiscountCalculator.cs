@@ -16,8 +16,8 @@ public class PercentBasedDiscountCalculator : IDiscountCalculator
                 continue;
 
             applied = true;
-            decimal discounted = item.Price * (discount.Value / 100);
-            item.DiscountedPrice = item.Price - discounted;
+            decimal applyDiscount = item.Price * (discount.Value / 100);
+            item.DiscountedPrice = item.Price - applyDiscount;
             item.UsedDiscounts += $"{discount.Name}, ";
         }
         if (applied)

@@ -1,6 +1,5 @@
 ﻿using Core.CrossCuttingConcerns.Exceptions.Types;
 using Core.Persistence.Paging;
-using Microsoft.EntityFrameworkCore.Query;
 using Moq;
 using Shop.Application.Contracts.Repositories;
 using Shop.Application.Features.Products.Handlers.Queries.ListByIds;

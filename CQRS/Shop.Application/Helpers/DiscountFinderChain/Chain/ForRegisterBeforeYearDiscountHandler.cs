@@ -15,7 +15,7 @@ public class ForRegisterBeforeYearDiscountHandler : AbstractDiscountFinder
         var registerCriteria = discount.Criteria
      .Where(w => w.DiscountAssignType == DiscountAssignType.ForRegisterBeforeYear).Select(w => int.Parse(w.Criterion)).ToList();
         if (registerCriteria.IsNullOrEmpty() || DateTime.UtcNow >= request.CustomerInfo.CreatedTime.AddYears(registerCriteria.Max()))
-            return base.Successor?.Handle(request, discount)?? request.Invoice;
+            return base.Successor.Handle(request, discount);
 
         return request.Invoice;
     }

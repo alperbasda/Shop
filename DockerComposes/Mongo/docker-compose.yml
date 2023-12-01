@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 version: '3'
 services:
   mongodb:
@@ -8,4 +9,16 @@ services:
     volumes:
       - type: bind
         source: ./data
+=======
+version: '3'
+services:
+  mongodb:
+    image: mongodb/mongodb-community-server:6.0-ubi8
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=abasda
+      - MONGO_INITDB_ROOT_PASSWORD=Passw0rd
+    volumes:
+      - type: bind
+        source: ./data
+>>>>>>> 367e8bdc63b3596c9d6677118e696bd09041922e
         target: /data/db

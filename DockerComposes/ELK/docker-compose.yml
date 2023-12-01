@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 version: '3'
 services:
   elasticsearch:
@@ -36,3 +37,43 @@ volumes:
 
 networks:
   elastic:
+=======
+version: '3'
+services:
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.15.0
+    container_name: elasticsearch
+    environment:
+      - discovery.type=single-node
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms1g -Xmx1g"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    
+    volumes:
+      - elasticsearch-data:/usr/share/elasticsearch/data
+    ports:
+      - 9200:9200
+    networks:
+      - elastic
+
+  kibana:
+    image: docker.elastic.co/kibana/kibana:7.15.0
+    container_name: kibana
+    environment:
+      - ELASTICSEARCH_HOSTS=http://localhost:9200
+    ports:
+      - 5601:5601
+    depends_on:
+      - elasticsearch
+    networks:
+      - elastic
+
+volumes:
+  elasticsearch-data:
+
+networks:
+  elastic:
+>>>>>>> 367e8bdc63b3596c9d6677118e696bd09041922e

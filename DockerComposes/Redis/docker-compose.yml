@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿version: '2'
 
 services:
@@ -5,4 +6,13 @@ services:
     image: 'redis:latest'
     command: redis-server --requirepass Alp*3142
     ports:
+=======
+﻿version: '2'
+
+services:
+   redis:
+    image: 'redis:latest'
+    command: redis-server --requirepass Alp*3142
+    ports:
+>>>>>>> 367e8bdc63b3596c9d6677118e696bd09041922e
       - '6379:6379'

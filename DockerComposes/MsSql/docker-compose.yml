@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 version: '3.3'
 
 services:
@@ -14,4 +15,22 @@ services:
       - my-volume:/var/opt/mssql
       
 volumes:
+=======
+version: '3.3'
+
+services:
+  mssql:
+    container_name: sql-server
+    image: mcr.microsoft.com/mssql/server:2017-latest
+    restart: always
+    environment:
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: "P@ssw0rd"
+    ports:
+      - 5555:1433
+    volumes:
+      - my-volume:/var/opt/mssql
+      
+volumes:
+>>>>>>> 367e8bdc63b3596c9d6677118e696bd09041922e
   my-volume:

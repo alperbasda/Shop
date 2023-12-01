@@ -8,6 +8,10 @@ namespace Shop.Application.Extensions;
 
 public class RandomGenerator
 {
+    protected RandomGenerator()
+    {
+        
+    }
     /// <summary>
     /// Verilen uzunlukta rasgele integer sayı üretir.
     /// </summary>

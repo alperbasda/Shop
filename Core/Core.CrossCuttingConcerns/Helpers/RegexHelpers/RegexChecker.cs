@@ -2,6 +2,10 @@
 
 public class RegexChecker
 {
+    protected RegexChecker()
+    {
+        
+    }
     public static bool IsRegex(string input)
     {
         try

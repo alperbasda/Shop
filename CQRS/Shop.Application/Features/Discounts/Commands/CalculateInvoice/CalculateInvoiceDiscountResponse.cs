@@ -4,5 +4,5 @@ namespace Shop.Application.Features.Discounts.Commands.CalculateInvoice;
 
 public class CalculateInvoiceDiscountResponse
 {
-    public Invoice Invoice { get; set; }
+    public Invoice Invoice { get; set; } = null!;
 }

@@ -9,9 +9,9 @@ namespace Shop.Application.Features.Customers.Handlers.Queries.GetWithRolesById;
 
 public class GetWithRolesByIdCustomerQueryHandler : IRequestHandler<GetWithRolesByIdCustomerQuery, GetWithRolesByIdCustomerResponse>
 {
-    ICustomerDal _customerDal;
-    CustomerBusinessRules _customerBusinessRules;
-    IMapper _mapper;
+    private readonly ICustomerDal _customerDal;
+    private readonly CustomerBusinessRules _customerBusinessRules;
+    private readonly IMapper _mapper;
 
     public GetWithRolesByIdCustomerQueryHandler(ICustomerDal customerDal, CustomerBusinessRules customerBusinessRules, IMapper mapper)
     {

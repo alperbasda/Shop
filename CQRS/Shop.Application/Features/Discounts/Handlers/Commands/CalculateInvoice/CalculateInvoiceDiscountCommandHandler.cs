@@ -7,8 +7,8 @@ namespace Shop.Application.Features.Discounts.Handlers.Commands.CalculateInvoice
 
 public class CalculateInvoiceDiscountCommandHandler : IRequestHandler<CalculateInvoiceDiscountCommand, CalculateInvoiceDiscountResponse>
 {
-    IDiscountChainStarter _discountChainStarter;
-    IMediator _mediator;
+    private readonly IDiscountChainStarter _discountChainStarter;
+    private readonly IMediator _mediator;
     public CalculateInvoiceDiscountCommandHandler(IDiscountChainStarter discountChainStarter, IMediator mediator)
     {
         _discountChainStarter = discountChainStarter;
@@ -17,7 +17,7 @@ public class CalculateInvoiceDiscountCommandHandler : IRequestHandler<CalculateI
 
     public async Task<CalculateInvoiceDiscountResponse> Handle(CalculateInvoiceDiscountCommand request, CancellationToken cancellationToken)
     {
-        var cacheDiscounts = (await _mediator.Send(new ListDynamicDiscountQuery())).Items.OrderBy(q => q.Priority);
+        var cacheDiscounts = (await _mediator.Send(new ListDynamicDiscountQuery(), cancellationToken: cancellationToken)).Items.OrderBy(q => q.Priority);
         foreach (var discount in cacheDiscounts)
         {
             if (request.Invoice.DiscountedTotalPrice != request.Invoice.TotalPrice)

@@ -18,5 +18,5 @@ public class InvoiceItem : MongoEntity<Guid>
 
     public decimal DiscountedPrice { get; set; }
 
-    public string UsedDiscounts { get; set; }
+    public string UsedDiscounts { get; set; } = "";
 }

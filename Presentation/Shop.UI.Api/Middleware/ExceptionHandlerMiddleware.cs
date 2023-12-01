@@ -18,7 +18,7 @@ public static class ExceptionHandlerMiddlewareExtension
 public class ExceptionHandlerMiddleware
 {
     private readonly RequestDelegate _next;
-    LoggerServiceBase _loggerServiceBase;
+    private readonly LoggerServiceBase _loggerServiceBase;
     public ExceptionHandlerMiddleware(RequestDelegate next, LoggerServiceBase loggerServiceBase)
     {
         _next = next;
@@ -33,7 +33,7 @@ public class ExceptionHandlerMiddleware
         }
         catch (ValidationException error)
         {
-            var errors = string.Join("<br/>", error.Errors.SelectMany(w => w.Errors));
+            var errors = string.Join("<br/>", error.Errors.SelectMany(w => w.Errors ?? new List<string>()));
             await context.Response.WriteAsJsonAsync(Response<MessageResponse>.Fail(errors, 400));
         }
         catch (BusinessException error)

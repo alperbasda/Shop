@@ -18,13 +18,13 @@ public class CachingBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, 
         _cache = cache;
     }
 
-    public async Task<TResponse> Handle(TRequest request, RequestHandlerDelegate<TResponse> next, CancellationToken cancellationToken)
+    public async Task<TResponse?> Handle(TRequest request, RequestHandlerDelegate<TResponse> next, CancellationToken cancellationToken)
     {
         if (request.BypassCache) {
           return await next();
         }
 
-        TResponse response;
+        TResponse? response;
         byte[]? cachedResponse = await _cache.GetAsync(request.CacheKey, cancellationToken);
         if (cachedResponse != null)
         {

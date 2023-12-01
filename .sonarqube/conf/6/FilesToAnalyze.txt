@@ -1,0 +1,12 @@
+﻿C:\Users\Admin\source\repos\ShopRu\Shop\Core\Core.Application\Pipelines\Caching\CacheRemovingBehavior.cs
+C:\Users\Admin\source\repos\ShopRu\Shop\Core\Core.Application\Pipelines\Caching\CacheSettings.cs
+C:\Users\Admin\source\repos\ShopRu\Shop\Core\Core.Application\Pipelines\Caching\CachingBehavior.cs
+C:\Users\Admin\source\repos\ShopRu\Shop\Core\Core.Application\Pipelines\Caching\ICachableRequest.cs
+C:\Users\Admin\source\repos\ShopRu\Shop\Core\Core.Application\Pipelines\Caching\ICacheRemoverRequest.cs
+C:\Users\Admin\source\repos\ShopRu\Shop\Core\Core.Application\Pipelines\Logging\ILoggableRequest.cs
+C:\Users\Admin\source\repos\ShopRu\Shop\Core\Core.Application\Pipelines\Logging\LoggingBehavior.cs
+C:\Users\Admin\source\repos\ShopRu\Shop\Core\Core.Application\Pipelines\Transaction\ITransactionalRequest.cs
+C:\Users\Admin\source\repos\ShopRu\Shop\Core\Core.Application\Pipelines\Transaction\TransactionScopeBehavior.cs
+C:\Users\Admin\source\repos\ShopRu\Shop\Core\Core.Application\Pipelines\Validation\RequestValidationBehavior.cs
+C:\Users\Admin\source\repos\ShopRu\Shop\Core\Core.Application\RabbitMqSettings.cs
+C:\Users\Admin\source\repos\ShopRu\Shop\Core\Core.Application\Pipelines\Caching\docker-compose.yml

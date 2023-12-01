@@ -186,9 +186,7 @@ public class EfRepositoryBase<TEntity,TEntityId,TContext>
             .ToList();
         foreach (INavigation? navigation in navigations)
         {
-            if (navigation.TargetEntityType.IsOwned())
-                continue;
-            if (navigation.PropertyInfo == null)
+            if (navigation.TargetEntityType.IsOwned() || navigation.PropertyInfo == null)
                 continue;
 
             object? navValue = navigation.PropertyInfo.GetValue(entity);

@@ -8,9 +8,9 @@ namespace Shop.Application.Features.Products.Handlers.Queries.ListByIds;
 
 public class ListByIdsProductQueryHandler : IRequestHandler<ListByIdsProductQuery, List<ListByIdsProductResponse>>
 {
-    ProductBusinessRules _productBusinessRules;
-    IProductDal _productDal;
-    IMapper _mapper;
+    private readonly ProductBusinessRules _productBusinessRules;
+    private readonly IProductDal _productDal;
+    private readonly IMapper _mapper;
     public ListByIdsProductQueryHandler(IProductDal productDal, IMapper mapper, ProductBusinessRules productBusinessRules)
     {
         _productDal = productDal;
@@ -22,6 +22,7 @@ public class ListByIdsProductQueryHandler : IRequestHandler<ListByIdsProductQuer
     {
         var datas = await _productDal.GetListAsync(w => request.Ids.Contains(w.Id), cancellationToken: cancellationToken);
 
+        await _productBusinessRules.ThrowExceptionIfDataNull(datas);
         await _productBusinessRules.ThrowExceptionIfDataNull(datas.Items);
 
         return _mapper.Map<List<ListByIdsProductResponse>>(datas.Items);

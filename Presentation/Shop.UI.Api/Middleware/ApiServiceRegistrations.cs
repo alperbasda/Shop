@@ -25,10 +25,6 @@ public static class ApiServiceRegistrations
         T settings = new T();
         configuration.GetSection(settings.GetType().Name).Bind(settings);
 
-        services.Configure<T>(options =>
-        {
-            options = settings;
-        });
         services.AddSingleton<T>(sp =>
         {
             return settings;

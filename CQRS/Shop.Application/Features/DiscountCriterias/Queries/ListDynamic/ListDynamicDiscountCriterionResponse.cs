@@ -8,7 +8,7 @@ public class ListDynamicDiscountCriterionResponse
 
     public DiscountAssignType DiscountAssignType { get; set; }
 
-    public string Criterion { get; set; }
+    public string Criterion { get; set; } = null!;
 
     public bool UseForDirectCondition { get; set; }
 } 

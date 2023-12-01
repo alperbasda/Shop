@@ -6,7 +6,7 @@ namespace Shop.Application.Features.Discounts.Commands.CalculateInvoice;
 
 public class CalculateInvoiceDiscountCommand : IRequest<CalculateInvoiceDiscountResponse>
 {
-    public Invoice Invoice { get; set; }
+    public Invoice Invoice { get; set; } = null!;
 
-    public GetWithRolesByIdCustomerResponse CustomerInfo { get; set; }
+    public GetWithRolesByIdCustomerResponse CustomerInfo { get; set; } = null!;
 }

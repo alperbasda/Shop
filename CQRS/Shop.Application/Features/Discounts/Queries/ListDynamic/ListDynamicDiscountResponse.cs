@@ -5,6 +5,10 @@ namespace Shop.Application.Features.Discounts.Queries.ListDynamic;
 
 public class ListDynamicDiscountResponse
 {
+    public ListDynamicDiscountResponse()
+    {
+        Criteria = new List<ListDynamicDiscountCriterionResponse>();
+    }
     public string Name { get; set; } = null!;
 
     public DiscountUsageType DiscountUsageType { get; set; }

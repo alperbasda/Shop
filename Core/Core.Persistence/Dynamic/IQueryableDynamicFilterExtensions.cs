@@ -6,8 +6,6 @@ namespace Core.Persistence.Dynamic;
 
 public static class IQueryableDynamicFilterExtensions
 {
-    private static int _index = -1;
-
     private static readonly IDictionary<FilterOperator, string> _operators = new Dictionary<FilterOperator, string>
     {
         { FilterOperator.Equals, "=" },
@@ -37,7 +35,6 @@ public static class IQueryableDynamicFilterExtensions
 
     public static IQueryable<T> ToDynamic<T>(this IQueryable<T> query, DynamicQuery? dynamicQuery)
     {
-        _index = -1;
         if (dynamicQuery is null)
             return query;
         if (dynamicQuery.Filter is not null)
@@ -63,12 +60,7 @@ public static class IQueryableDynamicFilterExtensions
         if (string.IsNullOrEmpty(sort.Field))
             throw new ArgumentException("Invalid Field");
 
-        if (sort is not null)
-        {
-            return queryable.OrderBy($"{sort.Field} {sort.OrderOperator.GetDescription()}");
-        }
-
-        return queryable;
+        return queryable.OrderBy($"{sort.Field} {sort.OrderOperator.GetDescription()}");
     }
 
     public static IList<Filter> GetAllFilters(Filter filter)

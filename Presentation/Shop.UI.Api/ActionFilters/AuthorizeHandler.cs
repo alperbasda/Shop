@@ -33,7 +33,7 @@ public class AuthorizeHandlerAttribute : Attribute, IAuthorizationFilter
 
         if (context.HttpContext.Request.Headers.TryGetValue("Authorization", out StringValues jwt))
         {
-            jwt = CreateTokenFromRefreshTokenIfTokenInvalid(context.HttpContext, jwt);
+            jwt = CreateTokenFromRefreshTokenIfTokenInvalid(context.HttpContext, jwt!);
 
 
             var handler = new JwtSecurityTokenHandler();
@@ -44,7 +44,7 @@ public class AuthorizeHandlerAttribute : Attribute, IAuthorizationFilter
                 throw new AuthorizationException("", "Geçersiz Kullanıcı. Lütfen Yeni Token Talep Edin.");
             }
 
-            tokenParameters.AccessToken = jwt;
+            tokenParameters.AccessToken = jwt!;
 
             var identity = new ClaimsIdentity(token!.Claims, "basic");
             context.HttpContext.User = new ClaimsPrincipal(identity);
@@ -80,7 +80,7 @@ public class AuthorizeHandlerAttribute : Attribute, IAuthorizationFilter
         throw new AuthorizationException("", "Geçersiz Kullanıcı. Lütfen Yeni Token Talep Edin.");
     }
 
-    private string CreateTokenFromRefreshTokenIfTokenInvalid(HttpContext context, string token)
+    private static string CreateTokenFromRefreshTokenIfTokenInvalid(HttpContext context, string token)
     {
         try
         {
@@ -89,14 +89,14 @@ public class AuthorizeHandlerAttribute : Attribute, IAuthorizationFilter
 
             return token;
         }
-        catch (Exception e)
+        catch
         {
             throw new AuthorizationException("", "Geçersiz Kullanıcı. Lütfen Yeni Token Talep Edin.");
         }
     }
 
 
-    private TokenValidationParameters GetTokenOptions(HttpContext context)
+    private static TokenValidationParameters GetTokenOptions(HttpContext context)
     {
         JwtTokenOptions jwtTokenOptions = context.RequestServices.GetService<JwtTokenOptions>()!;
         return new TokenValidationParameters()

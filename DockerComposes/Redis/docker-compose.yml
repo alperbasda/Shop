@@ -1,0 +1,8 @@
+﻿version: '2'
+
+services:
+   redis:
+    image: 'redis:latest'
+    command: redis-server --requirepass Alp*3142
+    ports:
+      - '6379:6379'

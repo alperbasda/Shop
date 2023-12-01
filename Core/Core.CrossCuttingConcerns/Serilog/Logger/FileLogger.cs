@@ -2,22 +2,13 @@
 using Core.CrossCuttingConcerns.Serilog.Messages;
 using Microsoft.Extensions.Configuration;
 using Serilog;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Core.CrossCuttingConcerns.Serilog.Logger;
 
 public class FileLogger:LoggerServiceBase
 {
-    private readonly IConfiguration _configuration;
-
     public FileLogger(IConfiguration configuration)
     {
-        _configuration = configuration;
-
         FileLogConfiguration logConfig =
             configuration.GetSection("SeriLogConfigurations:FileLogConfiguration").Get<FileLogConfiguration>()
             ?? throw new Exception(SerilogMessages.NullOptionsMessage);

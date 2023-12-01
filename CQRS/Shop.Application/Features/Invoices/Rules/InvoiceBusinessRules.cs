@@ -1,4 +1,5 @@
-﻿using MediatR;
+﻿using Core.CrossCuttingConcerns.Exceptions.Types;
+using MediatR;
 using Shop.Application.Base;
 using Shop.Application.Features.Customers.Queries.GetWithRolesById;
 using Shop.Application.Features.InvoiceItems.Commands.Create;
@@ -9,7 +10,7 @@ namespace Shop.Application.Features.Invoices.Rules;
 
 public class InvoiceBusinessRules : BaseBusinessRules
 {
-    IMediator _mediator;
+    private readonly IMediator _mediator;
     public InvoiceBusinessRules(IMediator mediator)
     {
         _mediator = mediator;
@@ -31,7 +32,10 @@ public class InvoiceBusinessRules : BaseBusinessRules
         List<InvoiceItem> returnList = new List<InvoiceItem>();
         foreach (var item in invoiceItems)
         {
-            var selectedProduct = products.First(w => w.Id == item.ProductId);
+            var selectedProduct = products.FirstOrDefault(w => w.Id == item.ProductId);
+            if (selectedProduct == null)
+                throw new BusinessException($"Ürün Bulunamadı. Id : {item.ProductId}");
+
             returnList.Add(new InvoiceItem
             {
                 Id = Guid.NewGuid(),

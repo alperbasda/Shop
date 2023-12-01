@@ -1,0 +1,10 @@
+﻿C:\Users\Admin\source\repos\ShopRu\Shop\CQRS\Shop.Domain\Shop.Domain\Enum\DiscountUsageType.cs
+C:\Users\Admin\source\repos\ShopRu\Shop\CQRS\Shop.Domain\Shop.Domain\MongoEntities\Invoice.cs
+C:\Users\Admin\source\repos\ShopRu\Shop\CQRS\Shop.Domain\Shop.Domain\MongoEntities\InvoiceItem.cs
+C:\Users\Admin\source\repos\ShopRu\Shop\CQRS\Shop.Domain\Shop.Domain\RelationalEntities\Category.cs
+C:\Users\Admin\source\repos\ShopRu\Shop\CQRS\Shop.Domain\Shop.Domain\RelationalEntities\Customer.cs
+C:\Users\Admin\source\repos\ShopRu\Shop\CQRS\Shop.Domain\Shop.Domain\RelationalEntities\CustomerRoleRelation.cs
+C:\Users\Admin\source\repos\ShopRu\Shop\CQRS\Shop.Domain\Shop.Domain\RelationalEntities\Discount.cs
+C:\Users\Admin\source\repos\ShopRu\Shop\CQRS\Shop.Domain\Shop.Domain\RelationalEntities\DiscountCriterion.cs
+C:\Users\Admin\source\repos\ShopRu\Shop\CQRS\Shop.Domain\Shop.Domain\RelationalEntities\Product.cs
+C:\Users\Admin\source\repos\ShopRu\Shop\CQRS\Shop.Domain\Shop.Domain\RelationalEntities\Role.cs

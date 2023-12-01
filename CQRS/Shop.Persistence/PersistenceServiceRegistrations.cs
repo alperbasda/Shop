@@ -36,10 +36,6 @@ public static class PersistenceServiceRegistrations
         T settings = new T();
         configuration.GetSection(settings.GetType().Name).Bind(settings);
 
-        services.Configure<T>(options =>
-        {
-            options = settings;
-        });
         services.AddSingleton(sp =>
         {
             return settings;

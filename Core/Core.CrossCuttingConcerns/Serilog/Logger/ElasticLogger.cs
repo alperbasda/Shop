@@ -17,6 +17,7 @@ namespace Core.CrossCuttingConcerns.Serilog.Logger
             configuration.GetSection("SeriLogConfigurations:ElasticConfiguration").Get<ElasticConfiguration>()
             ?? throw new Exception(SerilogMessages.NullOptionsMessage);
 
+
             // Enable the selflog output
             SelfLog.Enable(Console.Error);
             base.Logger = new LoggerConfiguration()

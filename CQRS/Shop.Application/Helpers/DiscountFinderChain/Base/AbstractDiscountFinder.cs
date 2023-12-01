@@ -7,10 +7,10 @@ namespace Shop.Application.Helpers.DiscountFinderChain.Base;
 
 public abstract class AbstractDiscountFinder
 {
-    public AbstractDiscountFinder Successor { get; set; }
+    public AbstractDiscountFinder? Successor { get; set; }
 
-    private DiscountCalculatorFactory _factory;
-    public AbstractDiscountFinder()
+    private readonly DiscountCalculatorFactory _factory;
+    protected AbstractDiscountFinder()
     {
         _factory = new DiscountCalculatorFactory();
     }

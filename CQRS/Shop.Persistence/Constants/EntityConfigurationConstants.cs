@@ -1,6 +1,6 @@
 ﻿namespace Shop.Persistence.Constants;
 
-public class EntityConfigurationConstants
+public static class EntityConfigurationConstants
 {
     public const int MinLevelMaxLength = 50;
 

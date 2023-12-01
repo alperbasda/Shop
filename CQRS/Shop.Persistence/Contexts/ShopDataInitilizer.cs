@@ -7,6 +7,10 @@ namespace Shop.Persistence.Contexts;
 
 public class ShopDataInitilizer
 {
+    protected ShopDataInitilizer()
+    {
+        
+    }
 
     public static void InitData(ModelBuilder modelBuilder)
     {
@@ -96,7 +100,7 @@ public class ShopDataInitilizer
                 CreatedTime = DateTime.Now,
                 DeletedTime = null,
                 UpdatedTime = null,
-                Name = "$5 Discount For every $100",
+                Name = "5 Discount For every 100",
                 Value = 5,
                 DiscountUsageType = DiscountUsageType.Direct,
                 Priority = 4

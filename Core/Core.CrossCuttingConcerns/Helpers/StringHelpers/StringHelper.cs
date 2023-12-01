@@ -12,7 +12,7 @@ namespace Core.CrossCuttingConcerns.Helpers.StringHelpers
         /// <returns></returns>
         public static bool ContainSpace(string text)
         {
-            return text.Contains(" ");
+            return text.Contains(' ');
         }
 
         /// <summary>
@@ -22,7 +22,7 @@ namespace Core.CrossCuttingConcerns.Helpers.StringHelpers
         /// <returns></returns>
         public static bool NotContainSpace(string text)
         {
-            return !text.Contains(" ");
+            return !text.Contains(' ');
         }
 
         /// <summary>

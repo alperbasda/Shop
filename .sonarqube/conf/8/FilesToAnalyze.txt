@@ -1,0 +1,5 @@
+﻿C:\Users\Admin\source\repos\ShopRu\Shop\Core\Core.ApiHelpers\ApiControllerBase.cs
+C:\Users\Admin\source\repos\ShopRu\Shop\Core\Core.ApiHelpers\JwtHelper\Encyption\SecurityKeyHelper.cs
+C:\Users\Admin\source\repos\ShopRu\Shop\Core\Core.ApiHelpers\JwtHelper\Encyption\SigningCredentialsHelper.cs
+C:\Users\Admin\source\repos\ShopRu\Shop\Core\Core.ApiHelpers\JwtHelper\Models\JwtOptions.cs
+C:\Users\Admin\source\repos\ShopRu\Shop\Core\Core.ApiHelpers\JwtHelper\Models\TokenParameters.cs

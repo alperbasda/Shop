@@ -5,6 +5,10 @@ namespace Shop.Domain.RelationalEntities;
 
 public class Discount : Entity<Guid>
 {
+    public Discount()
+    {
+        DiscountCriteria = new List<DiscountCriterion>();
+    }
     public string Name { get; set; } = null!;
 
     public DiscountUsageType DiscountUsageType { get; set; }

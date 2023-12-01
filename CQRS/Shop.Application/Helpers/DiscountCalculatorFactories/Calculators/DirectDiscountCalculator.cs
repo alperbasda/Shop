@@ -2,7 +2,6 @@
 using Microsoft.IdentityModel.Tokens;
 using Shop.Application.Features.Discounts.Queries.ListDynamic;
 using Shop.Application.Helpers.DiscountCalculatorFactories.Base;
-using Shop.Domain.Enum;
 using Shop.Domain.MongoEntities;
 
 namespace Shop.Application.Helpers.DiscountCalculatorFactories.Calculators;
@@ -16,7 +15,7 @@ public class DirectDiscountCalculator : IDiscountCalculator
             if (!w.UseForDirectCondition)
                 return false;
 
-            if (int.TryParse(w.Criterion, out int criterionAsInt))
+            if (int.TryParse(w.Criterion, out int criterionAsInt) && criterionAsInt > 0)
             {
                 return true;
             }
@@ -27,12 +26,18 @@ public class DirectDiscountCalculator : IDiscountCalculator
         {
             throw new BusinessException("Direct tipindeki indirimlerin UseForDirectCondition değeri true ayarlanmalıdır. ");
         }
-        invoice.DiscountedTotalPrice = invoice.TotalPrice - (Math.Floor((invoice.TotalPrice / conditionCriterion.Max())) * discount.Value);
-        if (invoice.DiscountedTotalPrice <= 0)
+        if (invoice.TotalPrice <= 0)
         {
-            throw new BusinessException("Fatura tutarı 0 veya daha küçük olduğu için indirim uygulanamaz.");
+            throw new BusinessException("Fatura tutarı 0'dan büyük olmalı. ");
         }
-        invoice.UsedDiscounts += $"{discount.Name}, ";
+        var multiplexer = Math.Floor(invoice.TotalPrice / conditionCriterion.Max());
+
+        if (multiplexer > 0)
+        {
+            invoice.DiscountedTotalPrice = invoice.TotalPrice - (multiplexer * discount.Value);
+            invoice.UsedDiscounts += $"{discount.Name}, ";
+        }
+
         return invoice;
     }
 }

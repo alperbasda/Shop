@@ -14,7 +14,7 @@ public class ForRoleDiscountHandler : AbstractDiscountFinder
              .Where(w => w.DiscountAssignType == DiscountAssignType.ForRole).Select(w => Guid.Parse(w.Criterion))
              .All(request.CustomerInfo.Roles.Select(q => q.Id).Contains);
         if (containsSameElement)
-            return base.Successor.Handle(request, discount);
+            return base.Successor?.Handle(request, discount) ?? request.Invoice;
 
         return request.Invoice;
 

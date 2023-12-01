@@ -9,9 +9,8 @@ namespace Shop.Application.Features.Discounts.Handlers.Queries.ListDynamic;
 
 public class ListDynamicDiscountQueryHandler : IRequestHandler<ListDynamicDiscountQuery, ListModel<ListDynamicDiscountResponse>>
 {
-
-    IDiscountDal _discountDal;
-    IMapper _mapper;
+    private readonly IDiscountDal _discountDal;
+    private readonly IMapper _mapper;
     public ListDynamicDiscountQueryHandler(IDiscountDal discountDal, IMapper mapper)
     {
         _discountDal = discountDal;

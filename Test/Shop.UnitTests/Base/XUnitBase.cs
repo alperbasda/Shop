@@ -2,16 +2,24 @@
 using AutoFixture.AutoMoq;
 using AutoFixture.Dsl;
 using AutoFixture.Kernel;
+using Microsoft.Extensions.DependencyInjection;
 using Moq;
+using Xunit.Microsoft.DependencyInjection;
 using Xunit.Microsoft.DependencyInjection.Abstracts;
+using Shop.Application;
+using Shop.Persistence;
+using Microsoft.Extensions.Configuration;
 
 namespace Shop.UnitTests.Base;
 
 /// <summary>
 /// Testler için temel sınıftır.
 /// </summary>
-public abstract class XUnitBase : TestBedFixture
+public class XUnitBase : TestBedFixture
 {
+    protected IConfiguration Configuration { get; private set; }
+
+    
     public IFixture Fixture { get; protected set; } = CreateFixture();
 
     protected TPoco GeneratePoco<TPoco>(Func<ICustomizationComposer<TPoco>, IPostprocessComposer<TPoco>> customizationAction = null)
@@ -42,6 +50,33 @@ public abstract class XUnitBase : TestBedFixture
         fixture.Behaviors.Add(new OmitOnRecursionBehavior());
 
         return fixture;
+    }
+
+    protected TService GenerateService<TService>(Action<ICustomizationComposer<TService>> customizationAction = null)
+    {
+        ICustomizationComposer<TService> a = Fixture.Build<TService>();
+        customizationAction?.Invoke(a);
+        return a.Create();
+    }
+
+    protected override IEnumerable<TestAppSettings> GetTestAppSettings()
+    {
+        yield return new() { Filename = "appsettings.json", IsOptional = false };
+    }
+
+    protected override ValueTask DisposeAsyncCore() => new();
+
+    protected override void AddServices(IServiceCollection services, IConfiguration? configuration)
+    {
+        SetConfiguration();
+        services.AddApplicationServices(configuration!);
+        services.AddPersistenceServices(configuration!);
+    }
+    private void SetConfiguration()
+    {
+        Configuration = new ConfigurationBuilder()
+                   .AddJsonFile("appsettings.json")
+                   .Build();
     }
 
 }

@@ -4,9 +4,13 @@ namespace Shop.Domain.MongoEntities;
 
 public class Invoice : MongoEntity<Guid>
 {
+    public Invoice()
+    {
+        InvoiceItems = new List<InvoiceItem>();
+    }
     public Guid CustomerId { get; set; }
 
-    public string CustomerFullName { get; set; }
+    public string CustomerFullName { get; set; } = "";
 
     public string Number { get; set; } = null!;
 

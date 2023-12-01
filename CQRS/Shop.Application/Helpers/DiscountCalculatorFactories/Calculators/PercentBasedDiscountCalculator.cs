@@ -2,7 +2,6 @@
 using Shop.Application.Helpers.DiscountCalculatorFactories.Base;
 using Shop.Domain.Enum;
 using Shop.Domain.MongoEntities;
-using Shop.Domain.RelationalEntities;
 
 namespace Shop.Application.Helpers.DiscountCalculatorFactories.Calculators;
 
@@ -10,18 +9,23 @@ public class PercentBasedDiscountCalculator : IDiscountCalculator
 {
     public Invoice Calculate(Invoice invoice, ListDynamicDiscountResponse discount)
     {
+        bool applied = false;
         foreach (var item in invoice.InvoiceItems)
         {
             if (IsCategoryExcluded(item, discount))
                 continue;
 
-            decimal indirimMiktari = item.Price * discount.Value / 100;
-            item.DiscountedPrice = item.Price - indirimMiktari;
+            applied = true;
+            decimal discounted = item.Price * (discount.Value / 100);
+            item.DiscountedPrice = item.Price - discounted;
             item.UsedDiscounts += $"{discount.Name}, ";
         }
-
-        invoice.UsedDiscounts += $"{discount.Name}, ";
-        invoice.DiscountedTotalPrice = invoice.InvoiceItems.Sum(x => x.DiscountedPrice);
+        if (applied)
+        {
+            invoice.UsedDiscounts += $"{discount.Name}, ";
+            invoice.DiscountedTotalPrice = invoice.InvoiceItems.Sum(x => x.DiscountedPrice);
+        }
+            
         return invoice;
     }
 

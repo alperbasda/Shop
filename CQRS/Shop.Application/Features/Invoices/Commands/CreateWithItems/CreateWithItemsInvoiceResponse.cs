@@ -4,9 +4,13 @@ namespace Shop.Application.Features.Invoices.Commands.CreateWithItems;
 
 public class CreateWithItemsInvoiceResponse
 {
+    public CreateWithItemsInvoiceResponse()
+    {
+        InvoiceItems = new List<CreateInvoiceItemResponse>();
+    }
     public Guid CustomerId { get; set; }
 
-    public string CustomerFullName { get; set; }
+    public string CustomerFullName { get; set; } = "";
 
     public string Number { get; set; } = null!;
 

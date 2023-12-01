@@ -16,5 +16,5 @@ public class CreateInvoiceItemResponse
 
     public decimal DiscountedPrice { get; set; }
 
-    public string UsedDiscounts { get; set; }
+    public string UsedDiscounts { get; set; } = "";
 }

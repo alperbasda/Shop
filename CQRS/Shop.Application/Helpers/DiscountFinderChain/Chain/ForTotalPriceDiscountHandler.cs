@@ -9,16 +9,12 @@ namespace Shop.Application.Helpers.DiscountFinderChain.Chain;
 
 public class ForTotalPriceDiscountHandler : AbstractDiscountFinder
 {
-    public ForTotalPriceDiscountHandler()
-    {
-
-    }
     public override Invoice Handle(CalculateInvoiceDiscountCommand request, ListDynamicDiscountResponse discount)
     {
         var totalPriceCriteria = discount.Criteria
      .Where(w => w.DiscountAssignType == DiscountAssignType.ForTotalPrice).Select(w => decimal.Parse(w.Criterion)).ToList();
         if (totalPriceCriteria.IsNullOrEmpty() || totalPriceCriteria.Max() <= request.Invoice.TotalPrice)
-            return base.Successor.Handle(request, discount);
+            return base.Successor?.Handle(request, discount) ?? request.Invoice;
 
         return request.Invoice;
     }
